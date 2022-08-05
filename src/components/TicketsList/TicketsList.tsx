@@ -5,6 +5,9 @@ import { ThunkDispatch } from "redux-thunk";
 
 import { State } from "../../models/state";
 import { getTickets, getTicketsSelector } from "../../store/tickets";
+import { TicketCard } from "../TicketCard";
+
+import './index.scss';
 
 const TicketsList = () => {
     const dispatch: ThunkDispatch<State, undefined, AnyAction> = useDispatch();
@@ -18,7 +21,13 @@ const TicketsList = () => {
     console.log(ticketsList);
 
     return (
-        <div></div>
+        <div className="tickets-container">
+            {
+                ticketsList.map((ticket, index) => 
+                    <TicketCard key={index} ticket={ticket}/>
+                )
+            }
+        </div>
     );
 };
 

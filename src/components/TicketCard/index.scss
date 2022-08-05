@@ -1,0 +1,41 @@
+@import '../../common/variables.scss';
+
+.tickets-container__ticket {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    border-radius: 0.25rem;
+    padding: 1.5rem;
+    background-color: $white;
+
+    &__buy {
+        display: flex;
+        flex-direction: column;
+
+        &__img {
+            width: 12rem;
+            height: 6rem;
+            background: url('../../assets/images/logo.png') no-repeat no-repeat center center;
+            background-size: contain;
+        }
+
+        &__btn {
+            width: 12rem;
+            height: 3rem;
+            border-radius: 0.25rem;
+            color: $white;
+            background-color: $dark_orange;
+
+            &:hover {
+                background-color: $light_orange;
+                box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+            }
+        }
+    }
+
+
+    &__info {
+        display: flex;
+    }
+}
