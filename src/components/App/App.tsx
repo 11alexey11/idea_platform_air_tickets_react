@@ -1,6 +1,15 @@
 import React from 'react';
+
+import { TicketsList } from '../TicketsList';
+
 import './index.scss';
 
-export const App = () => {
-    return <h1>Hello React</h1>
+const App = () => {
+    return (
+        <>
+            <TicketsList />
+        </>
+    )
 }
+
+export default App;
