@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AnyAction } from "redux";
-import { ThunkDispatch } from "redux-thunk";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
 
-import { State } from "../../models/state";
-import { getTickets, getTicketsSelector } from "../../store/tickets";
-import { TicketCard } from "../TicketCard";
+import { State } from '../../models/state';
+import { getTickets, getTicketsSelector } from '../../store/tickets';
+import { TicketCard } from '../TicketCard';
 
 import './index.scss';
 
@@ -21,7 +21,7 @@ const TicketsList = () => {
     console.log(ticketsList);
 
     return (
-        <div className="tickets-container">
+        <div className='tickets-container'>
             {
                 ticketsList.map((ticket, index) => 
                     <TicketCard key={index} ticket={ticket}/>

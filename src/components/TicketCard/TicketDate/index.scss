@@ -1,0 +1,32 @@
+@import '../../../common/variables.scss';
+
+.tickets-container__ticket__info-date {
+    display: flex;
+    flex-direction: column;
+
+    &.left {
+        align-items: flex-start;
+    }
+    
+    &.right {
+        align-items: flex-end;
+    }
+
+    &-time {
+        font-size: 2.5rem;
+        color: $black;
+        padding: 1rem 0;
+
+    }
+
+    &-name {
+        font-weight: 600;
+        color: $black;
+        padding: 0.25rem 0 0 0.25rem;
+    }
+
+    &-date {
+        color: $dark_grey;
+        padding: 0.25rem 0 0 0.25rem;
+    }
+}
