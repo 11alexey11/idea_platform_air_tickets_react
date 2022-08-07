@@ -3,8 +3,12 @@
 .menu-container__currency {
     display: flex;
     flex-direction: column;
+    padding: 1rem;
     
     &__title {
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding-bottom: 1rem;
         color: $black;
     }
 
@@ -13,12 +17,12 @@
 
         &__input {
             padding: 0.75rem 1.5rem;
-            color: $light_blue;
+            color: $dark_blue;
             background-color: $white;
 
             &:hover {
                 cursor: pointer;
-                background-color: $white_background;
+                background-color: $light_blue;
             }
 
             &.left {
@@ -26,17 +30,21 @@
                 border-top: 1px solid $dark_grey;
                 border-bottom: 1px solid $dark_grey;
                 border-radius: 0.5rem 0 0 0.5rem;
+                box-shadow: -1px 0px 0px 0px $dark_grey inset;
 
                 &:hover {
-                    border-color: $light_blue $light_blue $light_blue $light_blue;
+                    border-color: $dark_blue $dark_blue $dark_blue $dark_blue;
+                    box-shadow: -1px 0px 0px 0px $dark_blue inset;
                 }
             }
             
             &.middle {
-                border: 1px solid $dark_grey;
+                border-top: 1px solid $dark_grey;
+                border-bottom: 1px solid $dark_grey;
 
                 &:hover {
-                    border-color: $light_blue $light_blue $light_blue $light_blue;
+                    border-color: $dark_blue $dark_blue $dark_blue $dark_blue;
+                    box-shadow: 1px 0px 0px 0px $dark_blue, -1px 0px 0px 0px $dark_blue;
                 }
             }
 
@@ -45,9 +53,11 @@
                 border-top: 1px solid $dark_grey;
                 border-bottom: 1px solid $dark_grey;
                 border-radius: 0 0.5rem 0.5rem 0;
+                box-shadow: 1px 0px 0px 0px $dark_grey inset;
 
                 &:hover {
-                    border-color: $light_blue $light_blue $light_blue $light_blue;
+                    border-color: $dark_blue $dark_blue $dark_blue $dark_blue;
+                    box-shadow: 1px 0px 0px 0px $dark_blue inset;
                 }
             }
         }
