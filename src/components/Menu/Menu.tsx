@@ -12,7 +12,7 @@ const Menu = () => {
     const ticketsList: Ticket[] = useSelector(getTicketsSelector);
     const stops = ticketsList.map((transfer: Ticket) => transfer.stops);
     const maxTransfer = stops.length !== 0 ? Math.max(...stops) : 0;
-    const transfers = Array.from(Array(maxTransfer).keys());
+    const transfers = Array.from(Array(maxTransfer + 1).keys());
 
     return ( ticketsList.length !== 0 ?
         <div className='menu-container'>

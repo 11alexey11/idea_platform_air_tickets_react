@@ -23,11 +23,20 @@
         }
 
         &__btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.125rem;
             width: 12rem;
             height: 4rem;
             border-radius: 0.25rem;
             color: $white;
             background-color: $dark_orange;
+
+            &__text {
+                padding-bottom: 0.25rem;
+            }
 
             &:hover {
                 background-color: $light_orange;

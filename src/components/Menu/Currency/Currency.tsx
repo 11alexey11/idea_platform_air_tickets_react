@@ -18,7 +18,6 @@ const Currency = () => {
 
     const anchorHandler = (event: React.MouseEvent<HTMLAnchorElement>, currency: string) => {
         event.preventDefault();
-        console.log(currency);
         dispatch(changeMenuCurrency(currency));
     };
 

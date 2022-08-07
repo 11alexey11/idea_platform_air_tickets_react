@@ -23,7 +23,10 @@ const TicketCard = ({ ticket }: TicketCardProps) => {
         <div className='tickets-container__ticket'>
             <div className='tickets-container__ticket__buy'>
                 <div className='tickets-container__ticket__buy__img'></div>
-                <input className='tickets-container__ticket__buy__btn' type='button' value={`Купить за ${ticket.price}${currencies[currency]}`} />
+                <a className='tickets-container__ticket__buy__btn' type='button'>
+                    <div className='tickets-container__ticket__buy__btn__text'>Купить</div>
+                    <div className='tickets-container__ticket__buy__btn__text'>за {`${ticket.price} ${currencies[currency]}`}</div>
+                </a>
             </div>
             <div className='tickets-container__ticket__info'>
                 <TicketDate ticketDate={ticket} alignmentLeft />
