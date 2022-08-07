@@ -9,7 +9,7 @@ export class HttpService {
 
     get() {
         return new Promise<Ticket[]>((resolve) => setTimeout(() => {
-            resolve(this.data);
+            resolve(this.data.sort((a, b) => a.price - b.price));
         }, 2000));
     }
 }
