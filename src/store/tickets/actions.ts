@@ -19,3 +19,13 @@ export const getTickets = () => {
         dispatch(getTicketsAction(tickets));
     }
 };
+
+export const setSortedByTransfer = (tickets: Ticket[]) => ({
+    type: ticketsActionTypes.setSortedByTransfer,
+    payload: tickets
+});
+
+export const setSortingFlag = (isSorting: boolean) => ({
+    type: ticketsActionTypes.setSortingFlag,
+    payload: isSorting
+});

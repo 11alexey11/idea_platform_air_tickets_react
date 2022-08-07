@@ -2,7 +2,9 @@ import { Currency } from './currency';
 
 export interface State {
     tickets: {
-        list: []
+        list: [],
+        sortedList: [],
+        isSorting: boolean
     },
     menu: {
         currency: keyof Currency

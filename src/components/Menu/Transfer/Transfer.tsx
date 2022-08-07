@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AnyAction, Dispatch } from 'redux';
+import { Ticket } from '../../../models/ticket';
 
+import { getTicketsSelector, setSortedByTransfer, setSortingFlag } from '../../../store/tickets';
 import { formateWordOfTransfer } from '../../../utils/formateWordOfTransfer';
 
 import './index.scss';
@@ -8,35 +12,52 @@ interface TransferProps {
     transfers: number[]
 }
 
-interface ICheckbox {
+interface ICheckboxObject {
     [index: string] : boolean
 }
 
 const Transfer = ({transfers} :TransferProps) => {
-    const checkboxes = transfers.reduce((prev: ICheckbox, cur: number) => {
+    const checkboxes = transfers.reduce((prev: ICheckboxObject, cur: number) => {
         prev[cur] = true;
         return prev;
     }, { 'all': true });
 
+    const dispatch: Dispatch<AnyAction> = useDispatch();
     const [checkboxValues, setCheckboxValues] = useState(checkboxes);
+    const tickets = useSelector(getTicketsSelector);
+    
+
+    const filterTicketsByTransfer = (obj: ICheckboxObject, tickets: Ticket[]) => {
+        if (obj['all']) return tickets;
+
+        const checkedCheckboxes = Object.keys(obj).filter((key) => key !== 'all' && obj[key]).map((item) => +item);
+        const sortedTickets = tickets.filter((ticket) => checkedCheckboxes.includes(ticket.stops));
+        
+        return sortedTickets;
+    }
 
     const checkboxHandler = (event: React.ChangeEvent<HTMLInputElement>, value: string | number) => {
+        dispatch(setSortingFlag(true));
         if (value === 'all') {
-            const obj: ICheckbox = {};
+            const obj: ICheckboxObject = {};
             for (const key in checkboxValues) {
                 obj[key] = (event.target as HTMLInputElement).checked;
             }
+            const sortedTickets = filterTicketsByTransfer(obj, tickets);
+            dispatch(setSortedByTransfer(sortedTickets));
             setCheckboxValues(obj);
         } else {
             const obj = Object.assign({} , checkboxValues, { [value]: (event.target as HTMLInputElement).checked });
-            const numberOfCheckboxes = Object.entries(obj).filter(([key, value]) => {
+            const numberOfCheckedCheckboxes = Object.entries(obj).filter(([key, value]) => {
                 if (key !== 'all' && value) return value;
             }).length;
-            if (numberOfCheckboxes === transfers.length) {
+            if (numberOfCheckedCheckboxes === transfers.length) {
                 obj['all'] = !obj['all'];
             } else {
                 obj['all'] = false;
             }
+            const sortedTickets = filterTicketsByTransfer(obj, tickets);
+            dispatch(setSortedByTransfer(sortedTickets));
             setCheckboxValues(obj);
         }
     };
